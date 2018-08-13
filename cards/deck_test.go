@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"testing"
 )
 
@@ -21,6 +22,19 @@ func TestNewDeck(t *testing.T) {
 	// //confirm 1st card Ace of Spades
 	if d[len(d)-1] != last_card {
 		t.Errorf("Expected first card to be Four of Hearts, but got %s of %s", d[len(d)-1].value, d[len(d)-1].suit)
+	}
+
+}
+
+func TestSaveLoadDeckFromFile(t *testing.T) {
+	os.Remove("__decktest")
+	d := newDeck()
+	d.deckToFile("__decktest")
+	new_d := deckFromFile("__decktest")
+	os.Remove("__decktest")
+	//fmt.Println(new_d[0] == d[0] && new_d[0] == d[0])
+	if new_d[0] != d[0] || new_d[len(new_d)-1] != d[len(d)-1] || len(d) != len(new_d) {
+		t.Errorf("Deck saved to file should be same as deck loaded from file")
 	}
 
 }
