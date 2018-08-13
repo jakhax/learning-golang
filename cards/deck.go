@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 //card struct
@@ -67,6 +69,17 @@ func deckFromFile(filename string) deck {
 		card_str := strings.Split(c, " of ")
 		cards = append(cards, Card{card_str[1], card_str[0]})
 	}
-	fmt.Println(cards)
 	return cards
+}
+
+func (d deck) shuffle() {
+	//deck shuffle
+	//lets create a source of randomness with time.Now().UnixNano() as our seed
+	source := rand.NewSource(time.Now().UnixNano())
+	//lets now create an rng
+	r := rand.New(seed)
+	for i := range d {
+		rint := r.Intn(len(d) - 1)
+		d[i], d[rint] = d[rint], d[i]
+	}
 }
