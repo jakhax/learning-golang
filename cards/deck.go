@@ -77,7 +77,7 @@ func (d deck) shuffle() {
 	//lets create a source of randomness with time.Now().UnixNano() as our seed
 	source := rand.NewSource(time.Now().UnixNano())
 	//lets now create an rng
-	r := rand.New(seed)
+	r := rand.New(source)
 	for i := range d {
 		rint := r.Intn(len(d) - 1)
 		d[i], d[rint] = d[rint], d[i]
