@@ -7,4 +7,5 @@ func main() {
 	cards.print()
 	fmt.Println(cards.toString())
 	cards.deckToFile("file")
+	deckFromFile("file")
 }
