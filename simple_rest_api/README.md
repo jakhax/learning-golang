@@ -6,6 +6,8 @@ Simple RESTful API to create, read, update and delete books.
 
 No database implementation yet, using hard coded data.
 
+I am yet to sanitize user input hence input injection may be possible.
+
 
 ## Quick Start
 Make sure you have correctly setup go and created a project in `$GOPATH`
@@ -25,17 +27,17 @@ GET api/books
 ```
 ### Get Book by Id
 ``` bash
-GET api/books/{id}
+GET api/get-book/{id}
 ```
 
 ### Delete Book by Id
 ``` bash
-DELETE api/books/{id}
+DELETE api/delete-book/{id}
 ```
 
 ### Create Book
 ``` bash
-POST api/books
+POST api/create-book
 
 # Request sample
 # {
@@ -47,7 +49,7 @@ POST api/books
 
 ### Update Book by Id
 ``` bash
-PUT api/books/{id}
+PUT api/update-book/{id}
 
 # Request sample
 # {
