@@ -10,6 +10,8 @@ These repo consists of simple projects I build as I learn Golang. I really like 
   * My first go project, nothing cool here dont waste your time ):
 * [Simple Rest Api](https://github.com/jakhax/learning-golang/tree/master/simple_rest_api)
   * Simple RESTful API using mux router to create, read, update and delete books. No database implementation yet, using hard coded data.
+* [Simple Blockchain](https://github.com/jakhax/learning-golang/tree/master/simple_blockchain)
+  * Simple Blockchain implementaion to keep record of heart rate.
 
 ## Resources
 
