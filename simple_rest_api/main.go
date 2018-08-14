@@ -9,59 +9,38 @@ import (
 )
 
 type Book struct {
-	Id    string `json:"Id"`
-	Isbn  string `json:"Isbn"`
-	Title string `json:"Title"`
+	Id    string `json:"id"`
+	Isbn  string `json:"isbn"`
+	Title string `json:"title"`
 	// '*' allows us to access a pointer fields that  we will use when we create a struct variable
-	Author *Author `json:"Author"`
+	Author *Author `json:"author"`
 }
 
 type Author struct {
-	Firstname string `json:"Firstname"`
-	Lastname  string `json:"Lastname"`
+	Firstname string `json:"firstname"`
+	Lastname  string `json:"lastname"`
+}
+type RequestMessage struct {
+	Status string `json:"status"`
 }
 
-/*
--route handlers
--takes 2 must params - response,request
----response http:ResponseWriter
----request *http:Request
-*/
-
-//get all books
-func getBooks(w http.ResponseWriter, r *http.Request) {
-
-}
-
-//get a book by id
-func getBook(w http.ResponseWriter, r *http.Request) {
-
-}
-
-//create a book
-func createBook(w http.ResponseWriter, r *http.Request) {
-
-}
-
-//update a book by id
-func updateBook(w http.ResponseWriter, r *http.Request) {
-
-}
-
-//delete book by id
-func deleteBook(w http.ResponseWriter, r *http.Request) {
-
-}
+// books
+var books []Book
 
 func main() {
+	//test data books @todo implement database
+	// we use a pointer field author of struct Book to struct Author
+	books = append(books, Book{Id: "1", Isbn: "438227", Title: "Book One", Author: &Author{Firstname: "John", Lastname: "Doe"}})
+	books = append(books, Book{Id: "2", Isbn: "454555", Title: "Book Two", Author: &Author{Firstname: "Jane", Lastname: "Doe"}})
+
 	//create router
 	r := mux.NewRouter()
 	// endpoints and router handlers
-	r.HandleFunc("/books", getBooks).Methods("GET")
-	r.HandleFunc("/books/{id}", getBook).Methods("GET")
-	r.HandleFunc("/books", createBook).Methods("POST")
-	r.HandleFunc("/books/{id}", updateBook).Methods("PUT")
-	r.HandleFunc("/books/{id}", deleteBook).Methods("DELETE")
+	r.HandleFunc("/api/books", getBooks).Methods("GET")
+	r.HandleFunc("/api/get-book/{id}", getBook).Methods("GET")
+	r.HandleFunc("/api/create-book", createBook).Methods("POST")
+	r.HandleFunc("/api/update-book/{id}", updateBook).Methods("PUT")
+	r.HandleFunc("/api/delete-book/{id}", deleteBook).Methods("DELETE")
 
 	//lets start our server
 	log.Fatal(http.ListenAndServe(":8000", r))
