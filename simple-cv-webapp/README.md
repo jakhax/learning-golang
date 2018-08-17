@@ -2,7 +2,7 @@ Simple CV Webapp
 ===================
 ## Description
 
-Simple web application with Go for a CV for learning go html templates.
+Simple CV web page.
 
 ## Quick Start
 
