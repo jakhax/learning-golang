@@ -12,6 +12,8 @@ These repo consists of simple projects I build as I learn Golang. I really like 
   * Simple RESTful API using mux router to create, read, update and delete books. No database implementation yet, using hard coded data.
 * [Simple Blockchain](https://github.com/jakhax/learning-golang/tree/master/simple_blockchain)
   * Simple Blockchain implementaion to keep record of heart rate.
+* [Simple CV webpage](https://github.com/jakhax/learning-golang/tree/master/simple-cv-webapp)
+  * Simple CV web application, I learned a bit about go html templates.
 
 ## Resources
 
